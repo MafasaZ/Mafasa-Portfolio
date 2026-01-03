@@ -1,0 +1,556 @@
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 5%;
+}
+
+/* --- Desktop Navigation (Default) --- */
+nav {
+    display: flex;
+    flex-direction: column; /* Logo on top, links below */
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 160px;
+    margin-bottom: 15px;
+}
+
+nav ul {
+    display: flex; /* Horizontal links for desktop */
+    list-style: none;
+    gap: 30px;
+}
+
+/* Hide mobile icons on Desktop */
+.menu-icon, .close-icon {
+    display: none !important;
+}
+
+/* --- Mobile Navigation (Only for screens under 900px) --- */
+@media only screen and (max-width: 900px) {
+    .menu-icon {
+        display: block !important; /* Show 'bars' icon on mobile */
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        cursor: pointer;
+    }
+
+    nav ul {
+        background: #ff004f; /* Your signature red */
+        position: fixed;
+        top: 0;
+        right: -200px; /* Hide off-screen */
+        width: 200px;
+        height: 100vh;
+        flex-direction: column; /* Vertical links for mobile sidebar */
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+
+    .close-icon {
+        display: block !important; /* Show 'X' icon inside sidebar */
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+}
+
+
+/* --- Home Section (Text Left, Image Right) --- */
+#header {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Space between text and image */
+    width: 100%;
+}
+
+.header-text {
+    flex-basis: 55%;
+}
+
+.header-text h2 {
+    font-size: 60px;
+    line-height: 1.2;
+}
+
+.header-text h2 span {
+    color: #ff004f;
+}
+
+.header-text h4 {
+    color: #ababab;
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.header-img {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-img img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 0, 79, 0.2);
+}
+
+/* --- Responsive Layout --- */
+@media only screen and (max-width: 900px) {
+    .header-row {
+        flex-direction: column-reverse; /* Stacks image on top of text for mobile */
+        text-align: center;
+    }
+    .menu-icon {
+        display: block; /* Show menu only on mobile */
+    }
+    .header-text h2 {
+        font-size: 35px;
+    }
+}
+
+/* --- Navigation Bar Fix --- */
+nav {
+    display: flex; /* Forces logo and menu to stay on the same line */
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%; /* Adds consistent side spacing */
+    position: sticky;
+    top: 0;
+    background: #080808;
+    z-index: 1000;
+}
+
+.logo {
+    width: 300px; 
+    height: 80px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 50px; /* This moves your logo to the right side */
+    margin-bottom: 0;  /* Removed the gap to keep it straight with titles */
+}
+
+nav ul {
+    display: flex; /* Ensures links stay in a horizontal row */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 15px; /* Even spacing between your titles */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Red Underline: Only visible when the 'active' class is added via JS */
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Hide mobile icons on Desktop view */
+.menu-icon, .close-icon {
+    display: none !important;
+}
+
+/* --- Responsive View for Mobile --- */
+@media only screen and (max-width: 900px) {
+    .menu-icon {
+        display: block !important; /* Show icons only on small screens */
+        cursor: pointer;
+    }
+    
+    .close-icon {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    nav ul {
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: 0.5s;
+    }
+}
+
+/* --- About Section --- */
+#about {
+    padding: 80px 0;
+    color: #ababab;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1 {
+    flex-basis: 35%;
+}
+
+.about-col-1 img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2 {
+    flex-basis: 60%;
+}
+
+.sub-title {
+    font-size: 45px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links {
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+}
+
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after {
+    width: 50%;
+}
+
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span {
+    color: #ff004f;
+    font-size: 14px;
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
+}
+
+/* --- Projects Section --- */
+#projects {
+    padding: 50px 0;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+}
+
+.project-card {
+    height: 200px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-overlay {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.4), #ff004f);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    transition: height 0.5s;
+}
+.card-overlay h3 {
+    font-size: 28px; /* Making it "little bit big" as requested */
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.project-card:hover .card-overlay {
+    height: 100%;
+}
+
+/* --- Certifications Section --- */
+.certifications-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 30px;
+    margin-top: 40px;
+}
+
+.certification-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.certification-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.certification-card button {
+    background: #ff004f;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.layer {
+    display: none;
+    margin-top: 15px;
+    text-align: left;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+    animation: fadeIn 0.5s ease;
+}
+
+/* --- Responsive Layout --- */
+@media only screen and (max-width: 900px) {
+    .menu-icon {
+        display: block;
+    }
+    nav ul {
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    .close-icon {
+        display: block;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+    }
+    nav ul li {
+        display: block;
+        margin: 25px;
+    }
+    .header-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .header-text h2 {
+        font-size: 35px;
+    }
+}
+
+/* --- Contact Section Container --- */
+#contact-container {
+    padding: 60px 0;
+    background: #080808;
+}
+
+/* Swaps Form to Left and Details to Right */
+.contact-flex {
+    display: flex;
+    flex-direction: row-reverse; 
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Form Container (Now on the Left) */
+.contact-form {
+    flex-basis: 55%;
+}
+
+/* Fixes the white boxes and ensures stacking */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626; /* Fixed white box issue */
+    padding: 12px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+/* Details Container (Now on the Right) */
+.contact-details {
+    flex-basis: 40%;
+}
+
+.contact-details p {
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.contact-details p i {
+    color: #ff004f;
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+.contact-details a {
+    text-decoration: none;
+    color: #ababab;
+    transition: 0.3s;
+}
+
+.contact-details a:hover {
+    color: #ff004f;
+}
+
+/* Smaller Buttons */
+.btn2, .download-btn {
+    display: inline-block;
+    background: #ff004f;
+    color: #fff !important;
+    padding: 10px 25px; /* Reduced padding for smaller size */
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px; /* Smaller font */
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.5s;
+}
+
+.btn2:hover {
+    background: #d40042;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+    .contact-flex {
+        flex-direction: column; /* Stacks normally on phones */
+    }
+    .contact-details, .contact-form {
+        flex-basis: 100%;
+    }
+}
+
+.copyright {
+    width: 100%;
+    text-align: center; /* This centers the text and the heart icon */
+    padding: 25px 0;
+    background: #262626; /* Gives it a slight background to separate from content */
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.copyright p {
+    color: #fff;
+    font-size: 14px;
+}
+
+.copyright i {
+    color: #ff004f; /* Matches your theme color */
+    margin: 0 5px;
+}
